@@ -1,7 +1,9 @@
-import { CssBaseline } from "@mui/material";
+import { Box, CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { useMemo } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Navbar from "@/components/navbar/Navbar";
 import { themeSettings } from "./theme";
 
 const App = () => {
@@ -9,9 +11,21 @@ const App = () => {
 
   return (
     <div className="app">
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-      </ThemeProvider>
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Box width={"100%"} height={"100%"} padding={"1rem 2rem 4rem 2rem"}>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<div>Dashboard Page</div>} />
+              <Route
+                path="/predictions"
+                element={<div>Predictions Page</div>}
+              />
+            </Routes>
+          </Box>
+        </ThemeProvider>
+      </BrowserRouter>
     </div>
   );
 };
