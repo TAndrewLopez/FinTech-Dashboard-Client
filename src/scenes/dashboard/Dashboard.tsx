@@ -1,22 +1,57 @@
-import { Box, useTheme } from "@mui/material";
+import { Box, useMediaQuery } from "@mui/material";
+import Row1 from "./Row1";
+import Row2 from "./Row2";
+import Row3 from "./Row3";
 
-type Props = {};
+const desktopGridTemplate = `
+   "a b c"
+   "a b c"
+   "a b c"
+   "a b f"
+   "d e f"
+   "d e f"
+   "d h i"
+   "g h i"
+   "g h j"
+   "g h j"
 
-const gridTemplate = `
-    "revExp proRev moByMo"
-    "revExp proRev moByMo"
-    "revExp proRev moByMo"
-    "revExp proRev priceVsExp"
-    "opVsNonOp campTar priceVsExp"
-    "opVsNonOp campTar priceVsExp"
-    "opVsNonOp recOrd expBreak"
-    "listProd recOrd expBreak"
-    "listProd recOrd summary"
-    "listProd recOrd summary"
+
 `;
 
-const Dashboard = (props: Props) => {
-  const { palette } = useTheme();
+const mobileGridTemplate = `
+    "a"
+    "a"
+    "a"
+    "a"
+    "b"
+    "b"
+    "b"
+    "c"
+    "c"
+    "c"
+    "d"
+    "d"
+    "d"
+    "e"
+    "e"
+    "f"
+    "f"
+    "f"
+    "g"
+    "g"
+    "g"
+    "h"
+    "h"
+    "h"
+    "h"
+    "i"
+    "i"
+    "j"
+    "j"
+    `;
+
+const Dashboard = () => {
+  const isAboveMediumScreens = useMediaQuery("(min-width: 1200px)");
 
   return (
     <Box
@@ -24,21 +59,22 @@ const Dashboard = (props: Props) => {
       height={"100%"}
       display={"grid"}
       gap={"1.5rem"}
-      sx={{
-        gridTemplateColumns: "repeat(3, minmax(370px, 1fr))",
-        gridTemplateRows: "repeat(10, minmax(60px, 1fr))",
-        gridTemplateAreas: gridTemplate,
-      }}>
-      <Box gridArea={"revExp"} bgcolor="#fff"></Box>
-      <Box gridArea={"proRev"} bgcolor="#fff"></Box>
-      <Box gridArea={"moByMo"} bgcolor="#fff"></Box>
-      <Box gridArea={"opVsNonOp"} bgcolor="#fff"></Box>
-      <Box gridArea={"campTar"} bgcolor="#fff"></Box>
-      <Box gridArea={"priceVsExp"} bgcolor="#fff"></Box>
-      <Box gridArea={"listProd"} bgcolor="#fff"></Box>
-      <Box gridArea={"recOrd"} bgcolor="#fff"></Box>
-      <Box gridArea={"expBreak"} bgcolor="#fff"></Box>
-      <Box gridArea={"summary"} bgcolor="#fff"></Box>
+      sx={
+        isAboveMediumScreens
+          ? {
+              gridTemplateColumns: "repeat(3, minmax(370px, 1fr))",
+              gridTemplateRows: "repeat(10, minmax(60px, 1fr))",
+              gridTemplateAreas: desktopGridTemplate,
+            }
+          : {
+              gridAutoColumns: "1fr",
+              gridAutoRows: "80px",
+              gridTemplateAreas: mobileGridTemplate,
+            }
+      }>
+      <Row1 />
+      <Row2 />
+      <Row3 />
     </Box>
   );
 };
