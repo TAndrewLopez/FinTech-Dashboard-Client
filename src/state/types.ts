@@ -43,3 +43,13 @@ export interface GetProductResponse {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface GetTransactionResponse {
+  _id: string;
+  __v: number;
+  buyer: string;
+  amount: number;
+  productIds: string[];
+  createdAt: string;
+  updatedAt: string;
+}
