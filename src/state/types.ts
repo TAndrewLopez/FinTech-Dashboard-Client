@@ -26,7 +26,7 @@ export interface GetKpisResponse {
   totalProfit: number;
   totalRevenue: number;
   totalExpenses: number;
-  expensesByCategory: ExpensesByCategory[];
+  expensesByCategory: ExpensesByCategory;
   monthlyData: Month[];
   dailyData: Day[];
   createdAt: string;
@@ -38,7 +38,6 @@ export interface GetProductResponse {
   __v: number;
   price: number;
   expense: number;
-  expensesByCategory: ExpensesByCategory[];
   transactions: string[];
   createdAt: string;
   updatedAt: string;
