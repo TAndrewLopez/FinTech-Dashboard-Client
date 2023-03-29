@@ -147,8 +147,11 @@ const Row1 = () => {
       </DashboardBox>
       <DashboardBox gridArea={"i"}>
         <BoxHeader title={"Expense Breakdown by Category"} sideText={"+4%"} />
-        <FlexBetween
-          mt={"0.5rem"}
+        <Box
+          display={"flex"}
+          justifyContent={"space-around"}
+          alignItems={"center"}
+          mt={"1.25rem"}
           gap={"0.5rem"}
           p={"0 1rem"}
           textAlign={"center"}>
@@ -159,7 +162,7 @@ const Row1 = () => {
                   stroke={"none"}
                   data={data}
                   innerRadius={18}
-                  outerRadius={5}
+                  outerRadius={35}
                   paddingAngle={2}
                   dataKey={"value"}>
                   {data.map((entry, index) => (
@@ -170,9 +173,37 @@ const Row1 = () => {
               <Typography variant="h5">{data[0].name}</Typography>
             </Box>
           ))}
-        </FlexBetween>
+        </Box>
       </DashboardBox>
-      <DashboardBox gridArea={"j"}></DashboardBox>
+      <DashboardBox gridArea={"j"}>
+        <BoxHeader
+          title="Overall Summary and Explanation Data"
+          sideText="+15%"
+        />
+        <Box
+          display={"flex"}
+          flexDirection={"column"}
+          justifyContent={"space-around"}
+          height={"60%"}>
+          <Box
+            height={"15px"}
+            margin={"1.25rem 1rem 0.4rem 1rem"}
+            bgcolor={palette.primary[800]}
+            borderRadius={"1rem"}>
+            <Box
+              height={"15px"}
+              bgcolor={palette.primary[600]}
+              width={"40%"}
+              borderRadius={"1rem"}></Box>
+          </Box>
+          <Typography margin={"0 1rem"} variant={"h6"}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus
+            quod autem beatae porro, voluptas tempora ducimus dicta? Vitae,
+            consequatur corporis? Dolore hic neque dignissimos itaque dolorem
+            expedita nesciunt assumenda ducimus.
+          </Typography>
+        </Box>
+      </DashboardBox>
     </>
   );
 };
